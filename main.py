@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
-
+import random
+import requests
+import os
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -24,6 +26,34 @@ async def on_ready():
 async def add(ctx, left: int, right: int):
     """Adds two numbers together."""
     await ctx.send(left + right)
+
+@bot.command()
+async def mem(ctx):
+    await ctx.send("resim geliooo..")
+    dosya = os.listdir("C:\\Users\\zeux\\Desktop\\yazilimlar\\images")
+    bam = random.choice(dosya)
+    await ctx.send("geldi.")
+    await ctx.send(file=discord.File(f"C:\\Users\\zeux\\Desktop\\yazilimlar\\images\\{bam}"))
+
+@bot.command()
+async def animal(ctx):
+    await ctx.send("resim geliooo..")
+    dosya = os.listdir("C:\\Users\\zeux\\Desktop\\yazilimlar\\animalimages")
+    bam = random.choice(dosya)
+    await ctx.send("geldi.")
+    await ctx.send(file=discord.File(f"C:\\Users\\zeux\\Desktop\\yazilimlar\\images\\{bam}"))
+
+def get_duck_image_url():    
+    url = 'https://random-d.uk/api/random'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+
+@bot.command('duck')
+async def duck(ctx):
+    image_url = get_duck_image_url()
+    await ctx.send(image_url)
 
 @bot.command()
 async def commands(ctx):
