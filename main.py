@@ -28,6 +28,19 @@ async def add(ctx, left: int, right: int):
     await ctx.send(left + right)
 
 @bot.command()
+async def cop(ctx, cop: str):
+    await ctx.send("Düşünüyorum...")
+    if cop == "pet_şişe" or cop == "dergi":
+        await ctx.send("Kağıt ve Plastik Kutusuna At!")
+    elif cop == "cam_şişesi" or cop == "maden_suyu_şişesi":
+        await ctx.send("Cam Kutusuna At!")
+    elif cop == "alet_çantası" or cop == "çivi":
+        await ctx.send("Metal Kutusuna At!")
+    else:
+        await ctx.send("Bilmiyom Ki!.")
+
+
+@bot.command()
 async def mem(ctx):
     await ctx.send("resim geliooo..")
     dosya = os.listdir("C:\\Users\\zeux\\Desktop\\yazilimlar\\images")
@@ -92,4 +105,4 @@ async def joined(ctx, member: discord.Member):
     """Says when a member joined."""
     await ctx.send(f'{member.name} joined {discord.utils.format_dt(member.joined_at)}')
 
-bot.run("secret")
+bot.run("no way")
